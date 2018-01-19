@@ -103,7 +103,7 @@ public class movementCtrl : MonoBehaviour {
         {
             ReWind();
         }
-        Debug.Log(stackCount + " start at A : "+startAtStackA);
+        //Debug.Log(stackCount + " start at A : "+startAtStackA);
     }
 
     void GetInput()
