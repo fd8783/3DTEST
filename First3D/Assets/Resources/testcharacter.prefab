@@ -132,8 +132,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1546586522124780}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.2212524, y: 0.5, z: 8.889008}
+  m_LocalRotation: {x: 0, y: -0.8926747, z: 0, w: 0.45070168}
+  m_LocalPosition: {x: 45.774864, y: 9.325519, z: 41.229576}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4092467042836092}
@@ -141,7 +141,7 @@ Transform:
   - {fileID: 4611386971518198}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 3.6380002, y: -99.048004, z: 0.537}
 --- !u!4 &4611386971518198
 Transform:
   m_ObjectHideFlags: 1
@@ -388,9 +388,9 @@ MonoBehaviour:
   sideBackReduction: 0.5
   speedSmooth: 0.2
   rotSpeed: 0.2
-  targetYRot: 0
+  targetYRot: -129.50002
   curYRot: 0
-  groundRayLength: 0.5
+  groundRayLength: 0.51
   jumpVel: 750
   jumpTime: 0
   extraGravity: 30
