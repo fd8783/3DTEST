@@ -58,9 +58,9 @@
 				o.pos = UnityObjectToClipPos(v.vertex);
 				//o.uv = TRANSFORM_TEX(v.uv, _Texture);
 
-				o.pos.x = abs(o.pos.x*1.5f);
+				//o.pos.x = abs(o.pos.x*1.5f);
 				o.grabPos = ComputeGrabScreenPos(o.pos);
-				o.grabPos.x = abs(o.grabPos.x*1.5f);
+				//o.grabPos.x = abs(o.grabPos.x*1.5f);
 				return o;
 			}
 				
