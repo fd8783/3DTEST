@@ -2,20 +2,26 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[ExecuteInEditMode] //** run in edit mode
 public class ScreenCap : MonoBehaviour {
 
 	private Camera cam;
 
+    private string _globalCapTex = "globalCapTex";
+
 	// Use this for initialization
 	void Awake () {
-		cam = GetComponent<Camera>();
 	}
 	
 	// Update is called once per frame
-	void OnEnable () {
-		Debug.Log(333);
+	void OnEnable ()
+    {
+        cam = GetComponent<Camera>();
+        Debug.Log(333);
 
 		cam.targetTexture = new RenderTexture(cam.pixelWidth, cam.pixelHeight, 16);
 		cam.targetTexture.filterMode = FilterMode.Bilinear;
-	}
+
+        Shader.SetGlobalTexture(_globalCapTex, cam.targetTexture);
+    }
 }
