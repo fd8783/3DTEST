@@ -18,9 +18,17 @@ public class ScreenCap : MonoBehaviour {
     {
         cam = GetComponent<Camera>();
         Debug.Log(333);
+        if (cam.targetTexture != null)
+        {
+            RenderTexture temp = cam.targetTexture;
+            cam.targetTexture = null;
+            DestroyImmediate(temp);
+        }
+
 
 		cam.targetTexture = new RenderTexture(cam.pixelWidth, cam.pixelHeight, 16);
-		cam.targetTexture.filterMode = FilterMode.Bilinear;
+                                                    //16 ,depth,	Number of bits in depth buffer (0, 16 or 24). Note that only 24 bit depth has stencil buffer.
+        cam.targetTexture.filterMode = FilterMode.Bilinear;
 
         Shader.SetGlobalTexture(_globalCapTex, cam.targetTexture);
     }

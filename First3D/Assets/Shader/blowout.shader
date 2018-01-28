@@ -5,6 +5,8 @@
 		_MainTex ("Texture", 2D) = "white" {}
 		_Color1("Color1",Color) = (1,1,1,1)
 		_Color2("Color2",Color) = (1,1,1,1)
+		_DistortCenter("DistortCenter", Vector) = (0.5,0,0,0)
+		_DistortPower("DistortPower",float) = 0.5
 
 	}
 	SubShader
@@ -40,26 +42,33 @@
 			float4 _Color2;
 			float4 col1;
 			
+			float2 _DistortCenter;
+			float _DistortPower;
+			float angle;
+
+			uniform sampler2D globalCapTex;
+			//uniform float4 globalCapTex_ST;
+
 			v2f vert (appdata v)
 			{
 				v2f o;
 				o.vertex = UnityObjectToClipPos(v.vertex);
-				o.screenPos = o.vertex.xy;
-				o.uv = TRANSFORM_TEX(v.uv, _MainTex);
+				o.uv = v.uv;
+				o.screenPos = ((o.vertex.xy / o.vertex.w) + 1) / 2;
+
+				angle = cosh(float2(o.screenPos - _DistortCenter))*_DistortPower;
+				o.screenPos.x = o.screenPos.x*cos(angle) - o.screenPos.y*sin(angle);
+
+				o.screenPos.y = (1 - o.screenPos.y);
 				return o;
 			}
 			
 			fixed4 frag (v2f i) : SV_Target
 			{
 				// sample the texture
-				fixed4 col = tex2D(_MainTex, i.uv);
+				fixed4 col = tex2D(globalCapTex, i.screenPos); //if we use i.uv, it use the ScreenCap for the whole object, i.e. distort in sphere
 
-				if (i.screenPos.x >= 1) {
-					return _Color1;
-				}
-				else {
-					return _Color2;
-				}
+				return col;
 			}
 			ENDCG
 		}
