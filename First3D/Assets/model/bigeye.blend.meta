@@ -8,9 +8,37 @@ ModelImporter:
     100000: //RootNode
     100002: Cube
     100004: Sphere
+    100006: Armature
+    100008: Bone
+    100010: Bone_001
+    100012: Bone_002
+    100014: Bone_003
+    100016: Bone_004
+    100018: Bone_005
+    100020: Bone_006
+    100022: Bone_007
+    100024: Bone_008
+    100026: Bone_009
+    100028: Bone_010
+    100030: Bone_011
+    100032: Bone_012
     400000: //RootNode
     400002: Cube
     400004: Sphere
+    400006: Armature
+    400008: Bone
+    400010: Bone_001
+    400012: Bone_002
+    400014: Bone_003
+    400016: Bone_004
+    400018: Bone_005
+    400020: Bone_006
+    400022: Bone_007
+    400024: Bone_008
+    400026: Bone_009
+    400028: Bone_010
+    400030: Bone_011
+    400032: Bone_012
     2300000: Cube
     2300002: Sphere
     3300000: Cube
@@ -25,6 +53,11 @@ ModelImporter:
       assembly: UnityEngine.CoreModule
       name: Material
     second: {fileID: 2100000, guid: 5edd09f9011001c4a9fc8b03d4548326, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material__bigeyebody
+    second: {fileID: 2100000, guid: 2b07c88d771bb6246adfe955a303afde, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
