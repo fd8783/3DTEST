@@ -6,9 +6,10 @@ public class movementCtrl : MonoBehaviour {
 
     public GameObject followCam;
     private CameraFollow camScript;
+	private Animator anim;
 
     //movementSetting
-    public float forwardSpeed = 10f, sideBackReduction = 0.5f;
+    public float forwardSpeed = 10f, sideBackReduction = 0.5f, animSpeed;
     public float speedSmooth = 0.2f;
     public float rotSpeed = 0.2f, targetYRot, curYRot;
     public float groundRayLength = 0.5f; //~half body length (transform.position to body's bottom)
@@ -29,6 +30,7 @@ public class movementCtrl : MonoBehaviour {
 
     private bool aimming = false;
 
+
     private float stackCount = 0;
     private bool rewinding = false, startAtStackA = true;
     private Stack<Vector3> prePosA = new Stack<Vector3>();
@@ -43,13 +45,14 @@ public class movementCtrl : MonoBehaviour {
         inputSpeed = Vector3.zero;
         curSpeed = Vector3.zero;
         bodyRB = GetComponent<Rigidbody>();
+		anim = GetComponent<Animator>();
     }
 	
 	// Update is called once per frame
 	void Update ()
     {
         curPos = transform.position;
-        
+
         GetInput();
         GetReWind();
         Aim();
@@ -63,7 +66,8 @@ public class movementCtrl : MonoBehaviour {
 
     void FixedUpdate()
     {
-        //Debug.Log(bodyRB.velocity.y);
+		//Debug.Log(bodyRB.velocity.y);
+		animSpeed = 0;
         GroundCheck();
         if (!rewinding)
         {
@@ -103,7 +107,8 @@ public class movementCtrl : MonoBehaviour {
         {
             ReWind();
         }
-        //Debug.Log(stackCount + " start at A : "+startAtStackA);
+		//Debug.Log(stackCount + " start at A : "+startAtStackA);
+		anim.SetFloat("speed", animSpeed);
     }
 
     void GetInput()
@@ -136,8 +141,9 @@ public class movementCtrl : MonoBehaviour {
         {
             if (isGround)
             {
-                curSpeed.y = -(groundHit.distance-groundRayLength)/Time.fixedDeltaTime;
-            }
+				//curSpeed.y = -(groundHit.distance-groundRayLength)/Time.fixedDeltaTime;
+				curSpeed.y = (groundHit.distance - groundRayLength) / Time.fixedDeltaTime;
+			}
             else
             {
                 curSpeed.y -= extraGravity * Time.deltaTime; //default extraGravity is 0
@@ -145,6 +151,7 @@ public class movementCtrl : MonoBehaviour {
         }
 
         bodyRB.velocity = curSpeed;
+		animSpeed = inputSpeed.magnitude;
     }
 
     void Rotate() //Need Improvement, smooth should be replaced by RotateToward(max rot degree/frame)
@@ -193,11 +200,13 @@ public class movementCtrl : MonoBehaviour {
         if (Input.GetButtonDown("Aim"))
         {
             aimming = true;
+			anim.SetBool("holding", aimming);
         }
         if (Input.GetButtonUp("Aim"))
         {
             aimming = false;
-        }
+			anim.SetBool("holding", aimming);
+		}
     }
 
     void GetReWind()

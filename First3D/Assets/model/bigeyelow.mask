@@ -1,0 +1,70 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!319 &31900000
+AvatarMask:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: bigeyelow
+  m_Mask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+  m_Elements:
+  - m_Path: 
+    m_Weight: 1
+  - m_Path: Armature
+    m_Weight: 1
+  - m_Path: Armature/Body_Down
+    m_Weight: 1
+  - m_Path: Armature/Body_Down/Body_Mid
+    m_Weight: 0
+  - m_Path: Armature/Body_Down/Body_Mid/Head
+    m_Weight: 0
+  - m_Path: Armature/Body_Down/Body_Mid/Shoulder_L
+    m_Weight: 0
+  - m_Path: Armature/Body_Down/Body_Mid/Shoulder_L/Arm_01_L
+    m_Weight: 0
+  - m_Path: Armature/Body_Down/Body_Mid/Shoulder_L/Arm_01_L/Arm_02_L
+    m_Weight: 0
+  - m_Path: Armature/Body_Down/Body_Mid/Shoulder_L/Arm_01_L/Arm_02_L/Finger_Down_L
+    m_Weight: 0
+  - m_Path: Armature/Body_Down/Body_Mid/Shoulder_L/Arm_01_L/Arm_02_L/Finger_Down_L/Finger_Down_L_001
+    m_Weight: 0
+  - m_Path: Armature/Body_Down/Body_Mid/Shoulder_L/Arm_01_L/Arm_02_L/Hand_L
+    m_Weight: 0
+  - m_Path: Armature/Body_Down/Body_Mid/Shoulder_L/Arm_01_L/Arm_02_L/Hand_L/Finger_Top_L
+    m_Weight: 0
+  - m_Path: Armature/Body_Down/Body_Mid/Shoulder_R
+    m_Weight: 0
+  - m_Path: Armature/Body_Down/Body_Mid/Shoulder_R/Arm_01_R
+    m_Weight: 0
+  - m_Path: Armature/Body_Down/Body_Mid/Shoulder_R/Arm_01_R/Arm_02_R
+    m_Weight: 0
+  - m_Path: Armature/Body_Down/Body_Mid/Shoulder_R/Arm_01_R/Arm_02_R/Finger_Down_R
+    m_Weight: 0
+  - m_Path: Armature/Body_Down/Body_Mid/Shoulder_R/Arm_01_R/Arm_02_R/Finger_Down_R/Finger_Down_R_001
+    m_Weight: 0
+  - m_Path: Armature/Body_Down/Body_Mid/Shoulder_R/Arm_01_R/Arm_02_R/Hand_R
+    m_Weight: 0
+  - m_Path: Armature/Body_Down/Body_Mid/Shoulder_R/Arm_01_R/Arm_02_R/Hand_R/Finger_Top_R
+    m_Weight: 0
+  - m_Path: Armature/Body_Down/Leg_01_L
+    m_Weight: 1
+  - m_Path: Armature/Body_Down/Leg_01_L/Leg_02_L
+    m_Weight: 1
+  - m_Path: Armature/Body_Down/Leg_01_L/Leg_02_L/Leg_03_L
+    m_Weight: 1
+  - m_Path: Armature/Body_Down/Leg_01_L/Leg_02_L/Leg_03_L/Leg_04_L
+    m_Weight: 1
+  - m_Path: Armature/Body_Down/Leg_01_R
+    m_Weight: 1
+  - m_Path: Armature/Body_Down/Leg_01_R/Leg_02_R
+    m_Weight: 1
+  - m_Path: Armature/Body_Down/Leg_01_R/Leg_02_R/Leg_03_R
+    m_Weight: 1
+  - m_Path: Armature/Body_Down/Leg_01_R/Leg_02_R/Leg_03_R/Leg_04_R
+    m_Weight: 1
+  - m_Path: Cube
+    m_Weight: 0
+  - m_Path: Cylinder
+    m_Weight: 0
+  - m_Path: Sphere
+    m_Weight: 0
