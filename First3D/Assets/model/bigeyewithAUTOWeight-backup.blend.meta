@@ -78,6 +78,8 @@ ModelImporter:
     7400006: idle
     7400008: idle_low
     7400010: idle_up
+    7400012: hold_IK_
+    7400014: walk8
     9500000: //RootNode
     13700000: Cube
   externalObjects:

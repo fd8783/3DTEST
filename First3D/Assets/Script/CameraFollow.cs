@@ -29,12 +29,12 @@ public class CameraFollow : MonoBehaviour {
         followCam = transform.Find("Camera");
 		camLocalPosCheck = transform.Find("CamLocalPosCheck");
         followCam.localPosition = disGap;
-		targetCurPos = followTarget.transform.position;
+		targetCurPos = followTarget.GetComponent<Rigidbody>().centerOfMass;
         mouseMovement = Vector3.zero;
 		rayDis = (disGap.magnitude + rotCenterDis);
         SetUp();
 		//preMousePos = Camera.main.ScreenToViewportPoint(Input.mousePosition);
-		Debug.Log(followCam.position);
+		//Debug.Log(followCam.position);
     }
 	
 	// Update is called once per frame

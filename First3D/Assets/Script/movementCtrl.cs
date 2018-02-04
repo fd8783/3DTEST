@@ -45,7 +45,7 @@ public class movementCtrl : MonoBehaviour {
         inputSpeed = Vector3.zero;
         curSpeed = Vector3.zero;
         bodyRB = GetComponent<Rigidbody>();
-		anim = GetComponent<Animator>();
+		anim = transform.Find("model").GetComponent<Animator>();
     }
 	
 	// Update is called once per frame
@@ -142,7 +142,7 @@ public class movementCtrl : MonoBehaviour {
             if (isGround)
             {
 				//curSpeed.y = -(groundHit.distance-groundRayLength)/Time.fixedDeltaTime;
-				curSpeed.y = (groundHit.distance - groundRayLength) / Time.fixedDeltaTime;
+				curSpeed.y = (groundHit.distance - groundRayLength) * Time.fixedDeltaTime* 1.1f;
 			}
             else
             {
