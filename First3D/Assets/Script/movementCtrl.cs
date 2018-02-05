@@ -6,7 +6,7 @@ public class movementCtrl : MonoBehaviour {
 
     public GameObject followCam;
     private CameraFollow camScript;
-	private Animator anim;
+    private Animator anim;
 
     //movementSetting
     public float forwardSpeed = 10f, sideBackReduction = 0.5f, animSpeed;
@@ -28,7 +28,10 @@ public class movementCtrl : MonoBehaviour {
     private bool jumping = false;
     private float nextJumpTime;
 
-    private bool aimming = false;
+    //public float holdTime = 0.3f;
+    //private float countHold;
+    private bool holding = false, holded = false;
+    private bool blocking = false;
 
 
     private float stackCount = 0;
@@ -40,23 +43,24 @@ public class movementCtrl : MonoBehaviour {
     //private Vector3 debugBallPos;  //debug
 
     // Use this for initialization
-    void Awake () {
+    void Awake() {
         camScript = followCam.GetComponent<CameraFollow>();
         inputSpeed = Vector3.zero;
         curSpeed = Vector3.zero;
         bodyRB = GetComponent<Rigidbody>();
-		anim = transform.Find("model").GetComponent<Animator>();
+        anim = transform.Find("model").GetComponent<Animator>();
     }
-	
-	// Update is called once per frame
-	void Update ()
+
+    // Update is called once per frame
+    void Update()
     {
         curPos = transform.position;
 
         GetInput();
         GetReWind();
-        Aim();
-        if (moving || aimming)
+        Hold();
+        Block();
+        if (moving || holding || blocking)
         {
             Rotate();
         }
@@ -167,7 +171,7 @@ public class movementCtrl : MonoBehaviour {
         targetYRot = camScript.GetYRot();
         //targetYRot = followCam.transform.localEulerAngles.y;
         //curRot = Vector3.SmoothDamp(curRot, new Vector3(curRot.x, targetYRot, curRot.z), ref curSmoothRotVel, rotSpeed * (aimming ? 0.5f : 1));
-        curRot.y = Mathf.SmoothDampAngle(curRot.y, targetYRot, ref curSmoothRotVel.y, rotSpeed * (aimming? 0.5f :1 ));
+        curRot.y = Mathf.SmoothDampAngle(curRot.y, targetYRot, ref curSmoothRotVel.y, rotSpeed * (holding || blocking? 0.5f :1 ));
         transform.eulerAngles = curRot;
         //curYRot = Mathf.SmoothDamp(curYRot, targetYRot, ref curSmoothRotVel, rotSpeed); *******NOT WORKINGG
 
@@ -195,18 +199,35 @@ public class movementCtrl : MonoBehaviour {
         }
     }
 
-    void Aim()
+    void Hold()
     {
-        if (Input.GetButtonDown("Aim"))
+        if (Input.GetButtonDown("Hold"))
         {
-            aimming = true;
-			anim.SetBool("holding", aimming);
+            holding = true;
+            //countHold = Time.time;
+			anim.SetBool("holding", holding);
         }
-        if (Input.GetButtonUp("Aim"))
+        if (Input.GetButtonUp("Hold"))
         {
-            aimming = false;
-			anim.SetBool("holding", aimming);
+            holding = false;
+            //holded = (Time.time - countHold >= holdTime);
+            //anim.SetBool("holded", holded);
+            anim.SetBool("holding", holding);
 		}
+    }
+
+    void Block()
+    {
+        if (Input.GetButtonDown("Block"))
+        {
+            blocking = true;
+            anim.SetBool("blocking", blocking);
+        }
+        if (Input.GetButtonUp("Block"))
+        {
+            blocking = false;
+            anim.SetBool("blocking", blocking);
+        }
     }
 
     void GetReWind()
