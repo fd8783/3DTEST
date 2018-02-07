@@ -9,13 +9,14 @@ public class movementCtrl : MonoBehaviour {
     private Animator anim;
 
     //movementSetting
-    public float forwardSpeed = 10f, sideBackReduction = 0.5f, animSpeed;
+    public float forwardSpeed = 10f, sideBackReduction = 0.5f, speedToAnimWalk = 0.3f;
     public float speedSmooth = 0.2f;
     public float rotSpeed = 0.2f, targetYRot, curYRot;
     public float groundRayLength = 0.5f; //~half body length (transform.position to body's bottom)
     public float jumpVel = 500f, jumpTime = 0.3f;
     public float extraGravity = 0f;
 
+    private float animSpeed, animForwardSpeed, animRightSpeed;
     private Vector3 curSmoothRotVel; //ref usage
     private Vector3 inputSpeed, curSpeed, targetSpeed, curRot, curPos;
     private Rigidbody bodyRB;
@@ -28,9 +29,9 @@ public class movementCtrl : MonoBehaviour {
     private bool jumping = false;
     private float nextJumpTime;
 
-    //public float holdTime = 0.3f;
-    //private float countHold;
-    private bool holding = false, holded = false;
+    public float holdTime = 0.3f;
+    private float countHold;
+    private bool holding = false, holded = true;
     private bool blocking = false;
 
 
@@ -72,6 +73,8 @@ public class movementCtrl : MonoBehaviour {
     {
 		//Debug.Log(bodyRB.velocity.y);
 		animSpeed = 0;
+        animForwardSpeed = 0;
+        animRightSpeed = 0;
         GroundCheck();
         if (!rewinding)
         {
@@ -113,6 +116,8 @@ public class movementCtrl : MonoBehaviour {
         }
 		//Debug.Log(stackCount + " start at A : "+startAtStackA);
 		anim.SetFloat("speed", animSpeed);
+        anim.SetFloat("forwardSpeed", animForwardSpeed);
+        anim.SetFloat("rightSpeed", animRightSpeed);
     }
 
     void GetInput()
@@ -140,6 +145,14 @@ public class movementCtrl : MonoBehaviour {
         curSpeed = Vector3.Lerp(curSpeed, targetSpeed * forwardSpeed * (inputSpeed.z > 0 ? 1 : sideBackReduction), speedSmooth);
         //Debug.Log(curSpeed.ToString("F4"));
 
+        curSpeed.y = 0;
+        Debug.Log(curSpeed.magnitude);
+        if (curSpeed.magnitude > speedToAnimWalk)
+        {
+            animForwardSpeed = Mathf.Clamp(animForwardSpeed+inputSpeed.z == 0? 0 : Mathf.Sign(inputSpeed.z), -1,1);
+            animRightSpeed = Mathf.Clamp(animRightSpeed+ inputSpeed.x == 0? 0 : Mathf.Sign(inputSpeed.x), -1, 1);
+        }
+        
         curSpeed.y = bodyRB.velocity.y;
         if (curSpeed.y < 0)
         {
@@ -152,8 +165,9 @@ public class movementCtrl : MonoBehaviour {
             {
                 curSpeed.y -= extraGravity * Time.deltaTime; //default extraGravity is 0
             }
+            
         }
-
+        
         bodyRB.velocity = curSpeed;
 		animSpeed = inputSpeed.magnitude;
     }
@@ -201,19 +215,36 @@ public class movementCtrl : MonoBehaviour {
 
     void Hold()
     {
-        if (Input.GetButtonDown("Hold"))
+        if (Input.GetButtonDown("Hold") && holded)
         {
             holding = true;
-            //countHold = Time.time;
-			anim.SetBool("holding", holding);
+            holded = false;
+            countHold = Time.time;
+            anim.SetBool("holded", holded);
+            anim.SetBool("holding", holding);
         }
-        if (Input.GetButtonUp("Hold"))
+        if (Input.GetButtonUp("Hold") && holding)
         {
             holding = false;
-            //holded = (Time.time - countHold >= holdTime);
-            //anim.SetBool("holded", holded);
-            anim.SetBool("holding", holding);
+            if (Time.time - countHold >= holdTime)
+            {
+                holded = true;
+                anim.SetBool("holded", holded);
+                anim.SetBool("holding", holding);
+            }
+            else
+            {
+                StartCoroutine(AutoHold(holdTime - (Time.time - countHold)));
+            }
 		}
+    }
+
+    IEnumerator AutoHold(float time)
+    {
+        yield return new WaitForSeconds(time);
+        holded = true;
+        anim.SetBool("holded", holded);
+        anim.SetBool("holding", holding);
     }
 
     void Block()

@@ -35,6 +35,8 @@ ModelImporter:
     100054: Shoulder_R
     100056: Sphere
     100058: Head
+    100060: Armature_001
+    100062: Bone
     400000: Arm_01_L
     400002: Arm_01_R
     400004: Arm_02_L
@@ -65,6 +67,8 @@ ModelImporter:
     400054: Shoulder_R
     400056: Sphere
     400058: Head
+    400060: Armature_001
+    400062: Bone
     2300000: Cylinder
     2300002: Sphere
     3300000: Cylinder
@@ -80,8 +84,16 @@ ModelImporter:
     7400010: idle_up
     7400012: hold_IK_
     7400014: walk8
+    7400016: BlockMid
+    7400018: HoldTopAttack
+    7400020: ToBlock
+    7400022: topAttack
+    7400024: walk7V3
+    7400026: walk8V2
+    7400028: walk8V3
     9500000: //RootNode
     13700000: Cube
+    13700002: Sphere
   externalObjects:
   - first:
       type: UnityEngine:Material

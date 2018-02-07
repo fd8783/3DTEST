@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: e4b3d495b013269448ba010ac69b4190
+guid: a52c3b991a67f7c4cb9227925b067067
 timeCreated: 1517798973
 licenseType: Free
 ModelImporter:
@@ -45,7 +45,6 @@ ModelImporter:
     100074: Shoulder.L
     100076: Shoulder.R
     100078: Sphere
-    100080: eyelid
     400000: Arm 01.L
     400002: Arm 01.R
     400004: Arm 02.L
@@ -86,13 +85,11 @@ ModelImporter:
     400074: Shoulder.L
     400076: Shoulder.R
     400078: Sphere
-    400080: eyelid
     2300000: Cylinder
     3300000: Cylinder
     4300000: Cylinder
     4300002: Cube
     4300004: Sphere
-    4300006: eyelid
     7400000: Armature|BlockMid
     7400002: Armature|hold
     7400004: Armature|hold(IK)
@@ -105,14 +102,9 @@ ModelImporter:
     7400018: Armature|walk8
     7400020: Cube|topAttack
     7400022: Sphere|ToBlock
-    7400024: Armature|walk7V3
-    7400026: Armature|walk8V2
-    7400028: Armature|walk8V3
-    7400030: Armature|walk6V3
     9500000: //RootNode
     13700000: Cube
     13700002: Sphere
-    13700004: eyelid
   externalObjects:
   - first:
       type: UnityEngine:Material
@@ -959,17 +951,17 @@ ModelImporter:
       maskSource: {fileID: 31900000, guid: d77647d3054d1f544831f861f3f1443e, type: 2}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Armature|walk7V3
-      takeName: Armature|walk7V3
+      name: Cube|topAttack
+      takeName: Cube|topAttack
       firstFrame: 0
-      lastFrame: 20
+      lastFrame: 35
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 1
+      loopTime: 0
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
@@ -987,45 +979,17 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Armature|walk6V3
-      takeName: Armature|walk6V3
+      name: Sphere|ToBlock
+      takeName: Sphere|ToBlock
       firstFrame: 0
-      lastFrame: 20
+      lastFrame: 33
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 1
-      loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
-      transformMask: []
-      maskType: 3
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
-    - serializedVersion: 16
-      name: Armature|walk8V3
-      takeName: Armature|walk8V3
-      firstFrame: 0
-      lastFrame: 20
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 1
+      loopTime: 0
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
