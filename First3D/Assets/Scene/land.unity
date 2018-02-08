@@ -2338,7 +2338,7 @@ Animator:
   m_GameObject: {fileID: 623584769}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: e4b3d495b013269448ba010ac69b4190, type: 3}
-  m_Controller: {fileID: 9100000, guid: c130f1d977cd3f941a5fa2815734ada9, type: 2}
+  m_Controller: {fileID: 9100000, guid: 1226ea458bd773a4c96eaebf2e9ad16c, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -3976,33 +3976,6 @@ Transform:
   m_Father: {fileID: 681130794}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: -77.1754, y: 36.698204, z: -133.05083}
---- !u!84 &1328784706
-RenderTexture:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_Name: 
-  m_ImageContentsHash:
-    serializedVersion: 2
-    Hash: 00000000000000000000000000000000
-  m_Width: 756
-  m_Height: 425
-  m_AntiAliasing: 1
-  m_DepthFormat: 1
-  m_ColorFormat: 0
-  m_MipMap: 0
-  m_GenerateMips: 1
-  m_SRGB: 1
-  m_TextureSettings:
-    serializedVersion: 2
-    m_FilterMode: 1
-    m_Aniso: 0
-    m_MipBias: 0
-    m_WrapU: 1
-    m_WrapV: 1
-    m_WrapW: 1
-  m_Dimension: 2
-  m_VolumeDepth: 1
 --- !u!1 &1378742727
 GameObject:
   m_ObjectHideFlags: 0
@@ -4722,6 +4695,33 @@ Transform:
   m_Father: {fileID: 1378742728}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -35.14818, y: -16.285872, z: 94.82105}
+--- !u!84 &1698309072
+RenderTexture:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: 
+  m_ImageContentsHash:
+    serializedVersion: 2
+    Hash: 00000000000000000000000000000000
+  m_Width: 756
+  m_Height: 425
+  m_AntiAliasing: 1
+  m_DepthFormat: 1
+  m_ColorFormat: 0
+  m_MipMap: 0
+  m_GenerateMips: 1
+  m_SRGB: 1
+  m_TextureSettings:
+    serializedVersion: 2
+    m_FilterMode: 1
+    m_Aniso: 0
+    m_MipBias: 0
+    m_WrapU: 1
+    m_WrapV: 1
+    m_WrapW: 1
+  m_Dimension: 2
+  m_VolumeDepth: 1
 --- !u!1 &1710613621
 GameObject:
   m_ObjectHideFlags: 0
@@ -5686,7 +5686,7 @@ Camera:
     serializedVersion: 2
     m_Bits: 4294967039
   m_RenderingPath: -1
-  m_TargetTexture: {fileID: 1328784706}
+  m_TargetTexture: {fileID: 1698309072}
   m_TargetDisplay: 0
   m_TargetEye: 3
   m_HDR: 1

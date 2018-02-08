@@ -16,7 +16,7 @@ public class movementCtrl : MonoBehaviour {
     public float jumpVel = 500f, jumpTime = 0.3f;
     public float extraGravity = 0f;
 
-    private float animSpeed, animForwardSpeed, animRightSpeed;
+    private float animSpeed, animForwardSpeed, animRightSpeed, smoothX,smoothZ;
     private Vector3 curSmoothRotVel; //ref usage
     private Vector3 inputSpeed, curSpeed, targetSpeed, curRot, curPos;
     private Rigidbody bodyRB;
@@ -63,7 +63,7 @@ public class movementCtrl : MonoBehaviour {
         Block();
         if (moving || holding || blocking)
         {
-            Rotate();
+            //Rotate();
         }
         Jump();
 
@@ -73,8 +73,8 @@ public class movementCtrl : MonoBehaviour {
     {
 		//Debug.Log(bodyRB.velocity.y);
 		animSpeed = 0;
-        animForwardSpeed = 0;
-        animRightSpeed = 0;
+        //animForwardSpeed = 0;
+        //animRightSpeed = 0;
         GroundCheck();
         if (!rewinding)
         {
@@ -149,10 +149,14 @@ public class movementCtrl : MonoBehaviour {
         Debug.Log(curSpeed.magnitude);
         if (curSpeed.magnitude > speedToAnimWalk)
         {
-            animForwardSpeed = Mathf.Clamp(animForwardSpeed+inputSpeed.z == 0? 0 : Mathf.Sign(inputSpeed.z), -1,1);
-            animRightSpeed = Mathf.Clamp(animRightSpeed+ inputSpeed.x == 0? 0 : Mathf.Sign(inputSpeed.x), -1, 1);
+            //animForwardSpeed = Mathf.Clamp(animForwardSpeed+inputSpeed.z == 0? 0 : Mathf.Sign(inputSpeed.z), -1,1);
+            //animRightSpeed = Mathf.Clamp(animRightSpeed+ inputSpeed.x == 0? 0 : Mathf.Sign(inputSpeed.x), -1, 1);
+            //animForwardSpeed = inputSpeed.z == 0 ? 0 : Mathf.Sign(inputSpeed.z);
+            //animRightSpeed = inputSpeed.x == 0 ? 0 : Mathf.Sign(inputSpeed.x);
         }
-        
+        animForwardSpeed = Mathf.SmoothDamp(animForwardSpeed, inputSpeed.z == 0 ? 0 : Mathf.Sign(inputSpeed.z), ref smoothZ, speedSmooth);
+        animRightSpeed = Mathf.SmoothDamp(animRightSpeed, inputSpeed.x == 0 ? 0 : Mathf.Sign(inputSpeed.x), ref smoothX, speedSmooth);
+
         curSpeed.y = bodyRB.velocity.y;
         if (curSpeed.y < 0)
         {
