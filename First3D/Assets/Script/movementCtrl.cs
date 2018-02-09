@@ -73,9 +73,9 @@ public class movementCtrl : MonoBehaviour {
     {
 		//Debug.Log(bodyRB.velocity.y);
 		animSpeed = 0;
-        //animForwardSpeed = 0;
-        //animRightSpeed = 0;
-        GroundCheck();
+		animForwardSpeed = 0;
+		animRightSpeed = 0;
+		GroundCheck();
         if (!rewinding)
         {
             Move();
@@ -149,13 +149,13 @@ public class movementCtrl : MonoBehaviour {
         Debug.Log(curSpeed.magnitude);
         if (curSpeed.magnitude > speedToAnimWalk)
         {
-            //animForwardSpeed = Mathf.Clamp(animForwardSpeed+inputSpeed.z == 0? 0 : Mathf.Sign(inputSpeed.z), -1,1);
-            //animRightSpeed = Mathf.Clamp(animRightSpeed+ inputSpeed.x == 0? 0 : Mathf.Sign(inputSpeed.x), -1, 1);
-            //animForwardSpeed = inputSpeed.z == 0 ? 0 : Mathf.Sign(inputSpeed.z);
-            //animRightSpeed = inputSpeed.x == 0 ? 0 : Mathf.Sign(inputSpeed.x);
-        }
-        animForwardSpeed = Mathf.SmoothDamp(animForwardSpeed, inputSpeed.z == 0 ? 0 : Mathf.Sign(inputSpeed.z), ref smoothZ, speedSmooth);
-        animRightSpeed = Mathf.SmoothDamp(animRightSpeed, inputSpeed.x == 0 ? 0 : Mathf.Sign(inputSpeed.x), ref smoothX, speedSmooth);
+			//animForwardSpeed = Mathf.Clamp(animForwardSpeed+inputSpeed.z == 0? 0 : Mathf.Sign(inputSpeed.z), -1,1);
+			//animRightSpeed = Mathf.Clamp(animRightSpeed+ inputSpeed.x == 0? 0 : Mathf.Sign(inputSpeed.x), -1, 1);
+			animForwardSpeed = inputSpeed.z == 0 ? 0 : Mathf.Sign(inputSpeed.z);
+			animRightSpeed = inputSpeed.x == 0 ? 0 : Mathf.Sign(inputSpeed.x);
+		}
+        //animForwardSpeed = Mathf.SmoothDamp(animForwardSpeed, inputSpeed.z == 0 ? 0 : Mathf.Sign(inputSpeed.z), ref smoothZ, speedSmooth);
+        //animRightSpeed = Mathf.SmoothDamp(animRightSpeed, inputSpeed.x == 0 ? 0 : Mathf.Sign(inputSpeed.x), ref smoothX, speedSmooth);
 
         curSpeed.y = bodyRB.velocity.y;
         if (curSpeed.y < 0)

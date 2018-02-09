@@ -123,6 +123,9 @@ ModelImporter:
     7400030: walk8V3
     7400032: walk6V3
     7400034: walk7V4
+    7400036: walk4
+    7400038: walk5
+    7400040: walk6V3_001
     9500000: //RootNode
     13700000: Cube
     13700002: downlid
