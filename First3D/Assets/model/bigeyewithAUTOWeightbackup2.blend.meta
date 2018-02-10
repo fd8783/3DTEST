@@ -40,6 +40,9 @@ ModelImporter:
     100064: Sphere_002
     100066: Torus
     100068: uplid
+    100070: Armature_001
+    100072: Bone
+    100074: eyelid
     400000: Arm_01_L
     400002: Arm_01_R
     400004: Arm_02_L
@@ -75,6 +78,9 @@ ModelImporter:
     400064: Sphere_002
     400066: Torus
     400068: uplid
+    400070: Armature_001
+    400072: Bone
+    400074: eyelid
     2300000: Cylinder
     2300002: Plane
     2300004: Sphere
@@ -95,15 +101,32 @@ ModelImporter:
     4300010: Cylinder
     4300012: Cube
     4300014: uplid
+    4300016: eyelid
     7400000: Default Take
     7400002: hold
     7400004: idle
     7400006: idle_low
     7400008: idle_up
     7400010: walk
+    7400012: BlockMid
+    7400014: hold_IK_
+    7400016: HoldTopAttack
+    7400018: ToBlock
+    7400020: topAttack
+    7400022: walk4
+    7400024: walk5
+    7400026: walk6V3
+    7400028: walk6V3_001
+    7400030: walk7V3
+    7400032: walk7V4
+    7400034: walk8
+    7400036: walk8V2
+    7400038: walk8V3
     9500000: //RootNode
     13700000: Cube
     13700002: uplid
+    13700004: eyelid
+    13700006: Sphere
   externalObjects:
   - first:
       type: UnityEngine:Material
