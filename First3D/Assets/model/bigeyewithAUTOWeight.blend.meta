@@ -44,6 +44,8 @@ ModelImporter:
     100072: Armature_001
     100074: Bone
     100076: eyelid
+    100078: Armature_002
+    100080: Bone_0
     400000: Arm_01_L
     400002: Arm_01_R
     400004: Arm_02_L
@@ -83,6 +85,8 @@ ModelImporter:
     400072: Armature_001
     400074: Bone
     400076: eyelid
+    400078: Armature_002
+    400080: Bone_0
     2300000: Sphere
     2300002: Cylinder
     2300004: Plane
@@ -128,12 +132,19 @@ ModelImporter:
     7400040: walk6V3_001
     7400042: walk8_01
     7400044: topAttackV2
+    7400046: holdLeftAttack
+    7400048: LeftAttack
+    7400050: LeftAttackV2
+    7400052: LeftAttackV3
+    7400054: hold_001
+    7400056: holdRightAttack
     9500000: //RootNode
     13700000: Cube
     13700002: downlid
     13700004: uplid
     13700006: Sphere
     13700008: eyelid
+    13700010: Sphere_001
   externalObjects:
   - first:
       type: UnityEngine:Material
