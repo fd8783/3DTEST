@@ -138,6 +138,12 @@ ModelImporter:
     7400052: LeftAttackV3
     7400054: hold_001
     7400056: holdRightAttack
+    7400058: holdRightAttack_001
+    7400060: rightAttack
+    7400062: topAttackV2_L
+    7400064: topAttackV2_R
+    7400066: holdRightAttackV2
+    7400068: RightAttackV2
     9500000: //RootNode
     13700000: Cube
     13700002: downlid

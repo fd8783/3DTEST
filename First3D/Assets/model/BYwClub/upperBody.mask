@@ -15,7 +15,7 @@ AvatarMask:
   - m_Path: Armature/Body Down
     m_Weight: 0
   - m_Path: Armature/Body Down/Body Mid
-    m_Weight: 0
+    m_Weight: 1
   - m_Path: Armature/Body Down/Body Mid/Head
     m_Weight: 1
   - m_Path: Armature/Body Down/Body Mid/Head/Head_end

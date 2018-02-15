@@ -7,7 +7,7 @@ public class movementCtrl : MonoBehaviour {
     public GameObject followCam;
     private CameraFollow camScript;
     private Animator anim;
-
+    
     //movementSetting
     public float forwardSpeed = 10f, sideBackReduction = 0.5f, speedToAnimWalk = 0.3f;
     public float speedSmooth = 0.2f;
@@ -63,7 +63,7 @@ public class movementCtrl : MonoBehaviour {
         Block();
         if (moving || holding || blocking)
         {
-            //Rotate();
+            Rotate();
         }
         Jump();
 
@@ -146,7 +146,7 @@ public class movementCtrl : MonoBehaviour {
         //Debug.Log(curSpeed.ToString("F4"));
 
         curSpeed.y = 0;
-        Debug.Log(curSpeed.magnitude);
+        //Debug.Log(curSpeed.magnitude);
         if (curSpeed.magnitude > speedToAnimWalk)
         {
 			//animForwardSpeed = Mathf.Clamp(animForwardSpeed+inputSpeed.z == 0? 0 : Mathf.Sign(inputSpeed.z), -1,1);

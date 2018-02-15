@@ -199,33 +199,6 @@ Transform:
   m_Father: {fileID: 1710613622}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!84 &31941330
-RenderTexture:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_Name: 
-  m_ImageContentsHash:
-    serializedVersion: 2
-    Hash: 00000000000000000000000000000000
-  m_Width: 640
-  m_Height: 480
-  m_AntiAliasing: 1
-  m_DepthFormat: 1
-  m_ColorFormat: 0
-  m_MipMap: 0
-  m_GenerateMips: 1
-  m_SRGB: 1
-  m_TextureSettings:
-    serializedVersion: 2
-    m_FilterMode: 1
-    m_Aniso: 0
-    m_MipBias: 0
-    m_WrapU: 1
-    m_WrapV: 1
-    m_WrapW: 1
-  m_Dimension: 2
-  m_VolumeDepth: 1
 --- !u!1 &42505626
 GameObject:
   m_ObjectHideFlags: 0
@@ -563,6 +536,33 @@ Transform:
   m_Father: {fileID: 1246242560}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!84 &173295056
+RenderTexture:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: 
+  m_ImageContentsHash:
+    serializedVersion: 2
+    Hash: 00000000000000000000000000000000
+  m_Width: 741
+  m_Height: 417
+  m_AntiAliasing: 1
+  m_DepthFormat: 1
+  m_ColorFormat: 0
+  m_MipMap: 0
+  m_GenerateMips: 1
+  m_SRGB: 1
+  m_TextureSettings:
+    serializedVersion: 2
+    m_FilterMode: 1
+    m_Aniso: 0
+    m_MipBias: 0
+    m_WrapU: 1
+    m_WrapV: 1
+    m_WrapW: 1
+  m_Dimension: 2
+  m_VolumeDepth: 1
 --- !u!1 &180041127
 GameObject:
   m_ObjectHideFlags: 0
@@ -708,6 +708,7 @@ GameObject:
   m_Component:
   - component: {fileID: 205293475}
   - component: {fileID: 205293474}
+  - component: {fileID: 205293476}
   - component: {fileID: 205293473}
   - component: {fileID: 205293472}
   m_Layer: 0
@@ -782,6 +783,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &205293476
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 205293471}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c5a33ea5aea4aa4783194c4ac0a8f5a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pointUp: 0
+  pointDown: 0
+  pointRight: 0
+  pointLeft: 0
 --- !u!1 &206416150
 GameObject:
   m_ObjectHideFlags: 0
@@ -5691,7 +5707,7 @@ Camera:
     serializedVersion: 2
     m_Bits: 4294967039
   m_RenderingPath: -1
-  m_TargetTexture: {fileID: 31941330}
+  m_TargetTexture: {fileID: 173295056}
   m_TargetDisplay: 0
   m_TargetEye: 3
   m_HDR: 1
