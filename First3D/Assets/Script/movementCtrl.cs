@@ -4,10 +4,13 @@ using UnityEngine;
 
 public class movementCtrl : MonoBehaviour {
 
+
     public GameObject followCam;
     private CameraFollow camScript;
     private Animator anim;
     
+    public mousePoint mp;
+
     //movementSetting
     public float forwardSpeed = 10f, sideBackReduction = 0.5f, speedToAnimWalk = 0.3f;
     public float speedSmooth = 0.2f;
@@ -29,8 +32,8 @@ public class movementCtrl : MonoBehaviour {
     private bool jumping = false;
     private float nextJumpTime;
 
-    public float holdTime = 0.3f;
-    private float countHold;
+    public float holdTime = 0.3f, attackTime = 0.8f;
+    private float countHold, countAttack;
     private bool holding = false, holded = true;
     private bool blocking = false;
 
@@ -66,7 +69,7 @@ public class movementCtrl : MonoBehaviour {
             Rotate();
         }
         Jump();
-
+        AnimState();
     }
 
     void FixedUpdate()
@@ -217,52 +220,85 @@ public class movementCtrl : MonoBehaviour {
         }
     }
 
+    void AnimState()
+    {
+        anim.SetBool("holded", holded);
+        anim.SetBool("holding", holding);
+        anim.SetBool("blocking", blocking);
+    }
+
     void Hold()
     {
-        if (Input.GetButtonDown("Hold") && holded)
+        if (Input.GetButtonDown("Hold") && holded && !blocking)
         {
-            holding = true;
-            holded = false;
-            countHold = Time.time;
-            anim.SetBool("holded", holded);
-            anim.SetBool("holding", holding);
+            StartHold();
         }
-        if (Input.GetButtonUp("Hold") && holding)
+        if (Input.GetButtonUp("Hold"))
         {
-            holding = false;
-            if (Time.time - countHold >= holdTime)
+            if (holding) 
+            {
+                holding = false;
+                if (Time.time - countHold >= holdTime)
+                {
+                    holded = true;
+                    countAttack = Time.time;
+                }
+                else
+                {
+                    countAttack = Time.time + (holdTime - (Time.time - countHold));
+                    StartCoroutine(AutoHoldDown(holdTime - (Time.time - countHold)));
+                }
+            }
+            else // !holding  = get interrupted
             {
                 holded = true;
-                anim.SetBool("holded", holded);
-                anim.SetBool("holding", holding);
-            }
-            else
-            {
-                StartCoroutine(AutoHold(holdTime - (Time.time - countHold)));
             }
 		}
     }
 
-    IEnumerator AutoHold(float time)
+    void StartHold()
+    {
+        holding = true;
+        holded = false;
+
+        countHold = (Time.time - countAttack >= attackTime ? Time.time : Time.time + (attackTime - (Time.time - countAttack)));
+    }
+    
+    IEnumerator AutoHoldDown(float time)
     {
         yield return new WaitForSeconds(time);
         holded = true;
-        anim.SetBool("holded", holded);
-        anim.SetBool("holding", holding);
     }
 
     void Block()
     {
         if (Input.GetButtonDown("Block"))
         {
-            blocking = true;
-            anim.SetBool("blocking", blocking);
+            StartBlock();
         }
         if (Input.GetButtonUp("Block"))
         {
-            blocking = false;
-            anim.SetBool("blocking", blocking);
+            if (blocking)
+            {
+                blocking = false;
+
+                if (!holding && Input.GetButton("Hold"))    // get interrupt but still holding
+                {
+                    StartHold();
+                }
+            }
+            else  // !blocking = get interrupted
+            {
+                
+            }
         }
+    }
+
+    void StartBlock()
+    {
+        blocking = true;
+        if (holding)
+            holding = false;
     }
 
     void GetReWind()

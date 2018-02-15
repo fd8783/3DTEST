@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class mousePoint : MonoBehaviour {
-    
+
     public bool pointUp, pointDown,pointRight, pointLeft;
 
     private Animator anim;
