@@ -33,8 +33,8 @@ public class movementCtrl : MonoBehaviour {
     private float nextJumpTime;
 
     public float holdTime = 0.3f, attackTime = 0.8f;
-    private float countHold, countAttack;
-    private bool holding = false, holded = true;
+    private float countHold, countAttack = -1f;
+    private bool holding = false, waitingForAttack = false;
     private bool blocking = false;
 
 
@@ -64,11 +64,13 @@ public class movementCtrl : MonoBehaviour {
         GetReWind();
         Hold();
         Block();
+        WaitingForAttack();
         if (moving || holding || blocking)
         {
             Rotate();
         }
         Jump();
+        CheckHold();
         AnimState();
     }
 
@@ -222,14 +224,13 @@ public class movementCtrl : MonoBehaviour {
 
     void AnimState()
     {
-        anim.SetBool("holded", holded);
         anim.SetBool("holding", holding);
         anim.SetBool("blocking", blocking);
     }
 
-    void Hold()
+    /*void Hold()
     {
-        if (Input.GetButtonDown("Hold") && holded && !blocking)
+        if (Input.GetButtonDown("Hold") && !blocking && Time.time - countAttack >= attackTime)
         {
             StartHold();
         }
@@ -237,11 +238,14 @@ public class movementCtrl : MonoBehaviour {
         {
             if (holding) 
             {
-                holding = false;
                 if (Time.time - countHold >= holdTime)
                 {
-                    holded = true;
+                    //holded = true;
                     countAttack = Time.time;
+                    holding = false;
+                    anim.SetTrigger("attack");
+                    anim.SetTrigger("attackleg");
+                    StartCoroutine(AutoHoldUp(attackTime));
                 }
                 else
                 {
@@ -251,7 +255,7 @@ public class movementCtrl : MonoBehaviour {
             }
             else // !holding  = get interrupted
             {
-                holded = true;
+                //holded = true;
             }
 		}
     }
@@ -259,15 +263,90 @@ public class movementCtrl : MonoBehaviour {
     void StartHold()
     {
         holding = true;
-        holded = false;
-
-        countHold = (Time.time - countAttack >= attackTime ? Time.time : Time.time + (attackTime - (Time.time - countAttack)));
+        countHold = Time.time;
     }
     
+    IEnumerator AutoHoldUp(float time)
+    {
+        yield return new WaitForSeconds(time);
+        if (!holding && Input.GetButton("Hold"))    // get interrupt but still holding          ***Problem
+        {
+            StartHold();
+        }
+    }
+
     IEnumerator AutoHoldDown(float time)
     {
         yield return new WaitForSeconds(time);
-        holded = true;
+        holding = false;
+        anim.SetTrigger("attack");
+
+        anim.SetTrigger("attackleg");
+        StartCoroutine(AutoHoldUp(attackTime));
+        //holded = true;
+    }*/
+
+    void Hold()
+    {
+        if (Input.GetButtonDown("Hold") && !blocking && Time.time - countAttack >= attackTime)
+        {
+            StartHold();
+        }
+        if (Input.GetButtonUp("Hold"))
+        {
+            if (holding)
+            {
+                if (Time.time - countHold >= holdTime)
+                {
+                    countAttack = Time.time;
+                    holding = false;
+                    anim.SetTrigger("attack");
+                    anim.SetTrigger("attackleg");
+                }
+                else
+                {
+                    waitingForAttack = true;
+                    //countAttack = Time.time + (holdTime - (Time.time - countHold));
+                }
+            }
+            else // !holding  = get interrupted
+            {
+
+            }
+        }
+    }
+
+    void StartHold()
+    {
+        holding = true;
+        countHold = Time.time;
+    }
+
+    void WaitingForAttack()
+    {
+        if (waitingForAttack)
+        {
+            if (Time.time - countHold >= holdTime)
+            {
+                countAttack = Time.time;
+                holding = false;
+                anim.SetTrigger("attack");
+                anim.SetTrigger("attackleg");
+
+                waitingForAttack = false;
+            }
+        }
+    }
+
+    void CheckHold()    //place at last part
+    {
+        if (!holding && Input.GetButton("Hold"))    // get interrupt but still holding
+        {
+            if (!blocking && Time.time - countAttack >= attackTime)
+            {
+                StartHold();
+            }
+        }
     }
 
     void Block()
@@ -282,10 +361,6 @@ public class movementCtrl : MonoBehaviour {
             {
                 blocking = false;
 
-                if (!holding && Input.GetButton("Hold"))    // get interrupt but still holding
-                {
-                    StartHold();
-                }
             }
             else  // !blocking = get interrupted
             {
@@ -298,7 +373,10 @@ public class movementCtrl : MonoBehaviour {
     {
         blocking = true;
         if (holding)
+        {
             holding = false;
+            waitingForAttack = false;
+        }
     }
 
     void GetReWind()

@@ -90,9 +90,19 @@ AvatarMask:
     m_Weight: 1
   - m_Path: Armature.001/Bone/Bone_end
     m_Weight: 1
+  - m_Path: Armature.002
+    m_Weight: 1
+  - m_Path: Armature.002/Bone 1
+    m_Weight: 1
+  - m_Path: Armature.002/Bone 1/Bone_end 1
+    m_Weight: 1
   - m_Path: Cube
     m_Weight: 1
   - m_Path: Cylinder
     m_Weight: 1
+  - m_Path: eyelid
+    m_Weight: 1
   - m_Path: Sphere
+    m_Weight: 1
+  - m_Path: Sphere.001
     m_Weight: 1

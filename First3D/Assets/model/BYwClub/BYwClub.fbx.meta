@@ -277,11 +277,21 @@ ModelImporter:
         weight: 1
       - path: Armature.001/Bone/Bone_end
         weight: 1
+      - path: Armature.002
+        weight: 1
+      - path: Armature.002/Bone 1
+        weight: 1
+      - path: Armature.002/Bone 1/Bone_end 1
+        weight: 1
       - path: Cube
         weight: 1
       - path: Cylinder
         weight: 1
+      - path: eyelid
+        weight: 1
       - path: Sphere
+        weight: 1
+      - path: Sphere.001
         weight: 1
       maskType: 1
       maskSource: {fileID: 31900000, guid: de00db65d4ceaa841a1c681625431e90, type: 2}
@@ -393,11 +403,21 @@ ModelImporter:
         weight: 1
       - path: Armature.001/Bone/Bone_end
         weight: 1
+      - path: Armature.002
+        weight: 1
+      - path: Armature.002/Bone 1
+        weight: 1
+      - path: Armature.002/Bone 1/Bone_end 1
+        weight: 1
       - path: Cube
         weight: 1
       - path: Cylinder
         weight: 1
+      - path: eyelid
+        weight: 1
       - path: Sphere
+        weight: 1
+      - path: Sphere.001
         weight: 1
       maskType: 1
       maskSource: {fileID: 31900000, guid: de00db65d4ceaa841a1c681625431e90, type: 2}
@@ -1365,11 +1385,21 @@ ModelImporter:
         weight: 1
       - path: Armature.001/Bone/Bone_end
         weight: 1
+      - path: Armature.002
+        weight: 1
+      - path: Armature.002/Bone 1
+        weight: 1
+      - path: Armature.002/Bone 1/Bone_end 1
+        weight: 1
       - path: Cube
         weight: 1
       - path: Cylinder
         weight: 1
+      - path: eyelid
+        weight: 1
       - path: Sphere
+        weight: 1
+      - path: Sphere.001
         weight: 1
       maskType: 1
       maskSource: {fileID: 31900000, guid: de00db65d4ceaa841a1c681625431e90, type: 2}

@@ -536,33 +536,6 @@ Transform:
   m_Father: {fileID: 1246242560}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!84 &173295056
-RenderTexture:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_Name: 
-  m_ImageContentsHash:
-    serializedVersion: 2
-    Hash: 00000000000000000000000000000000
-  m_Width: 741
-  m_Height: 417
-  m_AntiAliasing: 1
-  m_DepthFormat: 1
-  m_ColorFormat: 0
-  m_MipMap: 0
-  m_GenerateMips: 1
-  m_SRGB: 1
-  m_TextureSettings:
-    serializedVersion: 2
-    m_FilterMode: 1
-    m_Aniso: 0
-    m_MipBias: 0
-    m_WrapU: 1
-    m_WrapV: 1
-    m_WrapW: 1
-  m_Dimension: 2
-  m_VolumeDepth: 1
 --- !u!1 &180041127
 GameObject:
   m_ObjectHideFlags: 0
@@ -757,6 +730,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   followCam: {fileID: 1170348422}
+  mp: {fileID: 0}
   forwardSpeed: 10
   sideBackReduction: 0.8
   speedToAnimWalk: 0.3
@@ -769,6 +743,7 @@ MonoBehaviour:
   jumpTime: 0.3
   extraGravity: 0
   holdTime: 0.3
+  attackTime: 0.81
 --- !u!4 &205293475
 Transform:
   m_ObjectHideFlags: 0
@@ -1175,6 +1150,33 @@ Transform:
   m_Father: {fileID: 1660752006}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!84 &286165345
+RenderTexture:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: 
+  m_ImageContentsHash:
+    serializedVersion: 2
+    Hash: 00000000000000000000000000000000
+  m_Width: 738
+  m_Height: 415
+  m_AntiAliasing: 1
+  m_DepthFormat: 1
+  m_ColorFormat: 0
+  m_MipMap: 0
+  m_GenerateMips: 1
+  m_SRGB: 1
+  m_TextureSettings:
+    serializedVersion: 2
+    m_FilterMode: 1
+    m_Aniso: 0
+    m_MipBias: 0
+    m_WrapU: 1
+    m_WrapV: 1
+    m_WrapW: 1
+  m_Dimension: 2
+  m_VolumeDepth: 1
 --- !u!1001 &303108570
 Prefab:
   m_ObjectHideFlags: 0
@@ -2042,6 +2044,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   followCam: {fileID: 1170348422}
+  mp: {fileID: 0}
   forwardSpeed: 10
   sideBackReduction: 0.8
   speedToAnimWalk: 0.3
@@ -2054,6 +2057,7 @@ MonoBehaviour:
   jumpTime: 0.3
   extraGravity: 0
   holdTime: 0.3
+  attackTime: 0.8
 --- !u!1 &573383286
 GameObject:
   m_ObjectHideFlags: 0
@@ -3401,6 +3405,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   followCam: {fileID: 1170348422}
+  mp: {fileID: 0}
   forwardSpeed: 10
   sideBackReduction: 0.5
   speedToAnimWalk: 0.3
@@ -3413,6 +3418,7 @@ MonoBehaviour:
   jumpTime: 0.3
   extraGravity: 0
   holdTime: 0.3
+  attackTime: 0.8
 --- !u!95 &1005694932
 Animator:
   serializedVersion: 3
@@ -5707,7 +5713,7 @@ Camera:
     serializedVersion: 2
     m_Bits: 4294967039
   m_RenderingPath: -1
-  m_TargetTexture: {fileID: 173295056}
+  m_TargetTexture: {fileID: 286165345}
   m_TargetDisplay: 0
   m_TargetEye: 3
   m_HDR: 1
