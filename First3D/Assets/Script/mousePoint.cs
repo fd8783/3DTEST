@@ -7,6 +7,9 @@ public class mousePoint : MonoBehaviour {
 
     public bool pointUp, pointDown,pointRight, pointLeft;
 
+    public bool holdUp, holdDown, holdRight, holdLeft;
+
+    private movementCtrl moveScript;
     private Animator anim;
 
     private Vector2 mousePreMove, mouseCurMove, mouseMoveDis;
@@ -15,13 +18,15 @@ public class mousePoint : MonoBehaviour {
     void Awake () {
         mousePreMove = Input.mousePosition;
 
-        anim = GetComponentInChildren<Animator>();
+        moveScript = transform.parent.GetComponent<movementCtrl>();
+        anim = GetComponent<Animator>();
         pointUp = true;
         anim.SetBool("mouseUp", pointUp);
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void Update ()
+    {
         MouseAxisUpdate();
 
     }
@@ -33,7 +38,7 @@ public class mousePoint : MonoBehaviour {
 
         if (mouseMoveDis != Vector2.zero)
         {
-            Debug.Log(mouseMoveDis);
+            //Debug.Log(mouseMoveDis);
             if (Mathf.Abs(mouseMoveDis.x) >= Mathf.Abs(mouseMoveDis.y))
             {
                 pointUp = false;
@@ -72,5 +77,52 @@ public class mousePoint : MonoBehaviour {
             anim.SetBool("mouseLeft", pointLeft);
         }
         mousePreMove = mouseCurMove;
+    }
+
+    /*public void UpdateHoldDirect(string direct)   //U = Up, D = Down, R = Right, L = Left         // * animation event in the unity model setting don't sent char
+    {
+        holdUp = false;
+        holdDown = false;
+        holdRight = false;
+        holdLeft = false;
+        switch (direct)
+        {
+            case "U":
+                holdUp = true;
+                break;
+            case "D":
+                holdDown = true;
+                break;
+            case "R":
+                holdRight = true;
+                break;
+            case "L":
+                holdLeft = true;
+                break;
+            
+            default:
+                break;
+        }
+        anim.SetBool("holdUp", holdUp);
+        anim.SetBool("holdDown", holdDown);
+        anim.SetBool("holdRight", holdRight);
+        anim.SetBool("holdLeft", holdLeft);
+        Debug.Log("DfFS");
+    }
+    */
+
+        //annotate* now UpdateHoldDirect is called by animator for every hold direct changing, somehow it call all function have same name so I need to comment zone this one
+    
+    public void UpdateHoldDirect()  
+    {
+        holdUp = pointUp;
+        holdDown = pointDown;
+        holdRight = pointRight;
+        holdLeft = pointLeft;
+        anim.SetBool("holdUp", holdUp);
+        anim.SetBool("holdDown", holdDown);
+        anim.SetBool("holdRight", holdRight);
+        anim.SetBool("holdLeft", holdLeft);
+        Debug.Log("DFS");
     }
 }

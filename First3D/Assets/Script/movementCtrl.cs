@@ -8,8 +8,9 @@ public class movementCtrl : MonoBehaviour {
     public GameObject followCam;
     private CameraFollow camScript;
     private Animator anim;
-    
-    public mousePoint mp;
+    private mousePoint mouseScript;
+
+    public bool rotateWhenAttacking = false;
 
     //movementSetting
     public float forwardSpeed = 10f, sideBackReduction = 0.5f, speedToAnimWalk = 0.3f;
@@ -32,10 +33,12 @@ public class movementCtrl : MonoBehaviour {
     private bool jumping = false;
     private float nextJumpTime;
 
+    public Transform leftHand, rightHand, weapon;
+    public Vector3 RHSWeaponPos, RHSWeaponRot, LHSWeaponPos, LHSWeaponRot;
     public float holdTime = 0.3f, attackTime = 0.8f;
     private float countHold, countAttack = -1f;
-    private bool holding = false, waitingForAttack = false;
-    private bool blocking = false;
+    private bool holding = false, waitingForAttack = false, attacking = false;
+    private bool blocking = false, curRightHand = true;
 
 
     private float stackCount = 0;
@@ -49,6 +52,7 @@ public class movementCtrl : MonoBehaviour {
     // Use this for initialization
     void Awake() {
         camScript = followCam.GetComponent<CameraFollow>();
+        mouseScript = transform.Find("model").GetComponent<mousePoint>();
         inputSpeed = Vector3.zero;
         curSpeed = Vector3.zero;
         bodyRB = GetComponent<Rigidbody>();
@@ -65,12 +69,15 @@ public class movementCtrl : MonoBehaviour {
         Hold();
         Block();
         WaitingForAttack();
-        if (moving || holding || blocking)
+        if (moving || holding || blocking || attacking) //!attacking = !moving
         {
-            Rotate();
+            if (rotateWhenAttacking || !attacking)  // I wrote the TTFF table in paper
+            {
+                Rotate();
+            }
         }
         Jump();
-        CheckHold();
+        CheckHoldOrAttack();
         AnimState();
     }
 
@@ -83,36 +90,39 @@ public class movementCtrl : MonoBehaviour {
 		GroundCheck();
         if (!rewinding)
         {
-            Move();
-            if (startAtStackA)
+            if (!attacking)
             {
-                if (stackCount < 100)
-                    prePosA.Push(transform.position);
-                else
-                    prePosB.Push(transform.position);
-            }
-            else
-            {
-                if (stackCount < 100)
-                    prePosB.Push(transform.position);
-                else
-                    prePosA.Push(transform.position);
-            }
-            stackCount++;
-            if (stackCount >= 200)
-            {
+                Move();
                 if (startAtStackA)
                 {
-                    stackCount -= prePosA.Count;
-                    prePosA.Clear();
+                    if (stackCount < 100)
+                        prePosA.Push(transform.position);
+                    else
+                        prePosB.Push(transform.position);
                 }
                 else
                 {
-                    stackCount -= prePosB.Count;
-                    prePosB.Clear();
+                    if (stackCount < 100)
+                        prePosB.Push(transform.position);
+                    else
+                        prePosA.Push(transform.position);
                 }
+                stackCount++;
+                if (stackCount >= 200)
+                {
+                    if (startAtStackA)
+                    {
+                        stackCount -= prePosA.Count;
+                        prePosA.Clear();
+                    }
+                    else
+                    {
+                        stackCount -= prePosB.Count;
+                        prePosB.Clear();
+                    }
 
-                startAtStackA = !startAtStackA;
+                    startAtStackA = !startAtStackA;
+                }
             }
         }
         else
@@ -132,7 +142,7 @@ public class movementCtrl : MonoBehaviour {
         inputSpeed = inputSpeed.normalized;
         //Debug.Log(inputSpeed.ToString("F4"));
 
-        moving = (inputSpeed.magnitude == 0 ? false : true);
+        moving = (inputSpeed.magnitude >= 0.1f ? true : false);
     }
 
     void Move()
@@ -288,7 +298,7 @@ public class movementCtrl : MonoBehaviour {
 
     void Hold()
     {
-        if (Input.GetButtonDown("Hold") && !blocking && Time.time - countAttack >= attackTime)
+        if (Input.GetButtonDown("Hold") && !blocking && !attacking)
         {
             StartHold();
         }
@@ -318,6 +328,7 @@ public class movementCtrl : MonoBehaviour {
 
     void StartHold()
     {
+        mouseScript.UpdateHoldDirect();
         holding = true;
         countHold = Time.time;
     }
@@ -338,11 +349,16 @@ public class movementCtrl : MonoBehaviour {
         }
     }
 
-    void CheckHold()    //place at last part
+    void CheckHoldOrAttack()    //place at last part
     {
+        if (Time.time - countAttack >= attackTime)
+            attacking = false;
+        else
+            attacking = true;
+
         if (!holding && Input.GetButton("Hold"))    // get interrupt but still holding
         {
-            if (!blocking && Time.time - countAttack >= attackTime)
+            if (!blocking && !attacking)
             {
                 StartHold();
             }
@@ -377,6 +393,30 @@ public class movementCtrl : MonoBehaviour {
             holding = false;
             waitingForAttack = false;
         }
+    }
+
+    public void TurnHand()
+    {
+        if (curRightHand)
+        {
+
+        }
+    }
+
+    public void TurnRightHand()
+    {
+        curRightHand = true;
+        weapon.parent = rightHand;
+        weapon.localPosition = RHSWeaponPos;
+        weapon.localRotation = Quaternion.Euler(RHSWeaponRot);
+    }
+
+    public void TurnLeftHand()
+    {
+        curRightHand = false;
+        weapon.parent = leftHand;
+        weapon.localPosition = LHSWeaponPos;
+        weapon.localRotation = Quaternion.Euler(LHSWeaponRot);
     }
 
     void GetReWind()

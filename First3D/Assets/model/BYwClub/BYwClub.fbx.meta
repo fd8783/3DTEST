@@ -50,6 +50,9 @@ ModelImporter:
     100084: Bone 1
     100086: Bone_end 1
     100088: Sphere.001
+    100090: eyelid.001
+    100092: eyelid.002
+    100094: eyelid.003
     400000: Arm 01.L
     400002: Arm 01.R
     400004: Arm 02.L
@@ -95,13 +98,33 @@ ModelImporter:
     400084: Bone 1
     400086: Bone_end 1
     400088: Sphere.001
+    400090: eyelid.001
+    400092: eyelid.002
+    400094: eyelid.003
     2300000: Cylinder
+    2300002: Cube
+    2300004: eyelid
+    2300006: eyelid.001
+    2300008: eyelid.002
+    2300010: eyelid.003
+    2300012: Sphere
+    2300014: Sphere.001
     3300000: Cylinder
+    3300002: Cube
+    3300004: eyelid
+    3300006: eyelid.001
+    3300008: eyelid.002
+    3300010: eyelid.003
+    3300012: Sphere
+    3300014: Sphere.001
     4300000: Cylinder
     4300002: Cube
     4300004: Sphere
     4300006: eyelid
     4300008: Sphere.001
+    4300010: eyelid.001
+    4300012: eyelid.002
+    4300014: eyelid.003
     7400000: Armature|BlockMid
     7400002: Armature|hold
     7400004: Armature|hold(IK)
@@ -128,11 +151,27 @@ ModelImporter:
     7400046: Armature|holdturn
     7400048: Armature|holdRightAttackV2
     7400050: Armature|holdLeftAttack
+    7400052: Armature|BlockLeft
+    7400054: Armature|BlockRight
+    7400056: Armature|BlockTop
+    7400058: Armature|holdRightAttack
+    7400060: Armature|rightAttack
+    7400062: Armature|LeftAttack
+    7400064: eyelid|downEyelid
+    7400066: eyelid|upEyelid
+    7400068: Armature|rightAttackV3
+    7400070: downEyelid
+    7400072: upEyelid
+    7400074: Cube|upEyelid
+    7400076: Armature|ahold
     9500000: //RootNode
     13700000: Cube
     13700002: Sphere
     13700004: eyelid
     13700006: Sphere.001
+    13700008: eyelid.001
+    13700010: eyelid.002
+    13700012: eyelid.003
   externalObjects:
   - first:
       type: UnityEngine:Material
@@ -162,7 +201,7 @@ ModelImporter:
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
-    animationCompression: 1
+    animationCompression: 3
     animationRotationError: 0.5
     animationPositionError: 0.5
     animationScaleError: 0.5
@@ -297,8 +336,8 @@ ModelImporter:
       maskSource: {fileID: 31900000, guid: de00db65d4ceaa841a1c681625431e90, type: 2}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Armature|hold
-      takeName: Armature|hold.001
+      name: Armature|ahold
+      takeName: Armature|ahold
       firstFrame: 0
       lastFrame: 1
       wrapMode: 0
@@ -473,7 +512,15 @@ ModelImporter:
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      events: []
+      events:
+      - time: 0
+        functionName: UpdateHoldDirect
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: 2c5a33ea5aea4aa4783194c4ac0a8f5a,
+          type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       transformMask:
       - path: 
         weight: 1
@@ -579,9 +626,9 @@ ModelImporter:
       hasAdditiveReferencePose: 0
       loopTime: 1
       loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
+      loopBlendOrientation: 1
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 1
       keepOriginalOrientation: 0
       keepOriginalPositionY: 1
       keepOriginalPositionXZ: 0
@@ -895,9 +942,9 @@ ModelImporter:
       hasAdditiveReferencePose: 0
       loopTime: 1
       loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
+      loopBlendOrientation: 1
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 1
       keepOriginalOrientation: 0
       keepOriginalPositionY: 1
       keepOriginalPositionXZ: 0
@@ -1011,9 +1058,9 @@ ModelImporter:
       hasAdditiveReferencePose: 0
       loopTime: 1
       loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
+      loopBlendOrientation: 1
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 1
       keepOriginalOrientation: 0
       keepOriginalPositionY: 1
       keepOriginalPositionXZ: 0
@@ -1039,9 +1086,9 @@ ModelImporter:
       hasAdditiveReferencePose: 0
       loopTime: 1
       loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
+      loopBlendOrientation: 1
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 1
       keepOriginalOrientation: 0
       keepOriginalPositionY: 1
       keepOriginalPositionXZ: 0
@@ -1067,9 +1114,9 @@ ModelImporter:
       hasAdditiveReferencePose: 0
       loopTime: 1
       loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
+      loopBlendOrientation: 1
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 1
       keepOriginalOrientation: 0
       keepOriginalPositionY: 1
       keepOriginalPositionXZ: 0
@@ -1095,9 +1142,9 @@ ModelImporter:
       hasAdditiveReferencePose: 0
       loopTime: 1
       loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
+      loopBlendOrientation: 1
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 1
       keepOriginalOrientation: 0
       keepOriginalPositionY: 1
       keepOriginalPositionXZ: 0
@@ -1123,9 +1170,9 @@ ModelImporter:
       hasAdditiveReferencePose: 0
       loopTime: 1
       loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
+      loopBlendOrientation: 1
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 1
       keepOriginalOrientation: 0
       keepOriginalPositionY: 1
       keepOriginalPositionXZ: 0
@@ -1151,9 +1198,9 @@ ModelImporter:
       hasAdditiveReferencePose: 0
       loopTime: 0
       loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
+      loopBlendOrientation: 1
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 1
       keepOriginalOrientation: 0
       keepOriginalPositionY: 1
       keepOriginalPositionXZ: 0
@@ -1301,7 +1348,15 @@ ModelImporter:
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      events: []
+      events:
+      - time: 0
+        functionName: UpdateHoldDirect
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: 2c5a33ea5aea4aa4783194c4ac0a8f5a,
+          type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       transformMask:
       - path: 
         weight: 1
@@ -1404,6 +1459,602 @@ ModelImporter:
       maskType: 1
       maskSource: {fileID: 31900000, guid: de00db65d4ceaa841a1c681625431e90, type: 2}
       additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Armature|BlockLeft
+      takeName: Armature|BlockLeft
+      firstFrame: 0
+      lastFrame: 1
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 0
+      - path: Armature/Body Down
+        weight: 0
+      - path: Armature/Body Down/Body Mid
+        weight: 1
+      - path: Armature/Body Down/Body Mid/Head
+        weight: 1
+      - path: Armature/Body Down/Body Mid/Head/Head_end
+        weight: 1
+      - path: Armature/Body Down/Body Mid/Shoulder.L
+        weight: 1
+      - path: Armature/Body Down/Body Mid/Shoulder.L/Arm 01.L
+        weight: 1
+      - path: Armature/Body Down/Body Mid/Shoulder.L/Arm 01.L/Arm 02.L
+        weight: 1
+      - path: Armature/Body Down/Body Mid/Shoulder.L/Arm 01.L/Arm 02.L/Finger Down.L
+        weight: 1
+      - path: Armature/Body Down/Body Mid/Shoulder.L/Arm 01.L/Arm 02.L/Finger Down.L/Finger
+          Down.L.001
+        weight: 1
+      - path: Armature/Body Down/Body Mid/Shoulder.L/Arm 01.L/Arm 02.L/Finger Down.L/Finger
+          Down.L.001/Finger Down.L.001_end
+        weight: 1
+      - path: Armature/Body Down/Body Mid/Shoulder.L/Arm 01.L/Arm 02.L/Hand.L
+        weight: 1
+      - path: Armature/Body Down/Body Mid/Shoulder.L/Arm 01.L/Arm 02.L/Hand.L/Finger
+          Top.L
+        weight: 1
+      - path: Armature/Body Down/Body Mid/Shoulder.L/Arm 01.L/Arm 02.L/Hand.L/Finger
+          Top.L/Finger Top.L_end
+        weight: 1
+      - path: Armature/Body Down/Body Mid/Shoulder.R
+        weight: 1
+      - path: Armature/Body Down/Body Mid/Shoulder.R/Arm 01.R
+        weight: 1
+      - path: Armature/Body Down/Body Mid/Shoulder.R/Arm 01.R/Arm 02.R
+        weight: 1
+      - path: Armature/Body Down/Body Mid/Shoulder.R/Arm 01.R/Arm 02.R/Finger Down.R
+        weight: 1
+      - path: Armature/Body Down/Body Mid/Shoulder.R/Arm 01.R/Arm 02.R/Finger Down.R/Finger
+          Down.R.001
+        weight: 1
+      - path: Armature/Body Down/Body Mid/Shoulder.R/Arm 01.R/Arm 02.R/Finger Down.R/Finger
+          Down.R.001/Finger Down.R.001_end
+        weight: 1
+      - path: Armature/Body Down/Body Mid/Shoulder.R/Arm 01.R/Arm 02.R/Hand.R
+        weight: 1
+      - path: Armature/Body Down/Body Mid/Shoulder.R/Arm 01.R/Arm 02.R/Hand.R/Finger
+          Top.R
+        weight: 1
+      - path: Armature/Body Down/Body Mid/Shoulder.R/Arm 01.R/Arm 02.R/Hand.R/Finger
+          Top.R/Finger Top.R_end
+        weight: 1
+      - path: Armature/Body Down/Leg 01.L
+        weight: 0
+      - path: Armature/Body Down/Leg 01.L/Leg 02.L
+        weight: 0
+      - path: Armature/Body Down/Leg 01.L/Leg 02.L/Leg 03.L
+        weight: 0
+      - path: Armature/Body Down/Leg 01.L/Leg 02.L/Leg 03.L/Leg 04.L
+        weight: 0
+      - path: Armature/Body Down/Leg 01.L/Leg 02.L/Leg 03.L/Leg 04.L/Leg 04.L_end
+        weight: 0
+      - path: Armature/Body Down/Leg 01.R
+        weight: 0
+      - path: Armature/Body Down/Leg 01.R/Leg 02.R
+        weight: 0
+      - path: Armature/Body Down/Leg 01.R/Leg 02.R/Leg 03.R
+        weight: 0
+      - path: Armature/Body Down/Leg 01.R/Leg 02.R/Leg 03.R/Leg 04.R
+        weight: 0
+      - path: Armature/Body Down/Leg 01.R/Leg 02.R/Leg 03.R/Leg 04.R/Leg 04.R_end
+        weight: 0
+      - path: Armature.001
+        weight: 1
+      - path: Armature.001/Bone
+        weight: 1
+      - path: Armature.001/Bone/Bone_end
+        weight: 1
+      - path: Armature.002
+        weight: 1
+      - path: Armature.002/Bone 1
+        weight: 1
+      - path: Armature.002/Bone 1/Bone_end 1
+        weight: 1
+      - path: Cube
+        weight: 1
+      - path: Cylinder
+        weight: 1
+      - path: eyelid
+        weight: 1
+      - path: Sphere
+        weight: 1
+      - path: Sphere.001
+        weight: 1
+      maskType: 3
+      maskSource: {fileID: 31900000, guid: de00db65d4ceaa841a1c681625431e90, type: 2}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Armature|BlockRight
+      takeName: Armature|BlockRight
+      firstFrame: 0
+      lastFrame: 1
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 0
+      - path: Armature/Body Down
+        weight: 0
+      - path: Armature/Body Down/Body Mid
+        weight: 1
+      - path: Armature/Body Down/Body Mid/Head
+        weight: 1
+      - path: Armature/Body Down/Body Mid/Head/Head_end
+        weight: 1
+      - path: Armature/Body Down/Body Mid/Shoulder.L
+        weight: 1
+      - path: Armature/Body Down/Body Mid/Shoulder.L/Arm 01.L
+        weight: 1
+      - path: Armature/Body Down/Body Mid/Shoulder.L/Arm 01.L/Arm 02.L
+        weight: 1
+      - path: Armature/Body Down/Body Mid/Shoulder.L/Arm 01.L/Arm 02.L/Finger Down.L
+        weight: 1
+      - path: Armature/Body Down/Body Mid/Shoulder.L/Arm 01.L/Arm 02.L/Finger Down.L/Finger
+          Down.L.001
+        weight: 1
+      - path: Armature/Body Down/Body Mid/Shoulder.L/Arm 01.L/Arm 02.L/Finger Down.L/Finger
+          Down.L.001/Finger Down.L.001_end
+        weight: 1
+      - path: Armature/Body Down/Body Mid/Shoulder.L/Arm 01.L/Arm 02.L/Hand.L
+        weight: 1
+      - path: Armature/Body Down/Body Mid/Shoulder.L/Arm 01.L/Arm 02.L/Hand.L/Finger
+          Top.L
+        weight: 1
+      - path: Armature/Body Down/Body Mid/Shoulder.L/Arm 01.L/Arm 02.L/Hand.L/Finger
+          Top.L/Finger Top.L_end
+        weight: 1
+      - path: Armature/Body Down/Body Mid/Shoulder.R
+        weight: 1
+      - path: Armature/Body Down/Body Mid/Shoulder.R/Arm 01.R
+        weight: 1
+      - path: Armature/Body Down/Body Mid/Shoulder.R/Arm 01.R/Arm 02.R
+        weight: 1
+      - path: Armature/Body Down/Body Mid/Shoulder.R/Arm 01.R/Arm 02.R/Finger Down.R
+        weight: 1
+      - path: Armature/Body Down/Body Mid/Shoulder.R/Arm 01.R/Arm 02.R/Finger Down.R/Finger
+          Down.R.001
+        weight: 1
+      - path: Armature/Body Down/Body Mid/Shoulder.R/Arm 01.R/Arm 02.R/Finger Down.R/Finger
+          Down.R.001/Finger Down.R.001_end
+        weight: 1
+      - path: Armature/Body Down/Body Mid/Shoulder.R/Arm 01.R/Arm 02.R/Hand.R
+        weight: 1
+      - path: Armature/Body Down/Body Mid/Shoulder.R/Arm 01.R/Arm 02.R/Hand.R/Finger
+          Top.R
+        weight: 1
+      - path: Armature/Body Down/Body Mid/Shoulder.R/Arm 01.R/Arm 02.R/Hand.R/Finger
+          Top.R/Finger Top.R_end
+        weight: 1
+      - path: Armature/Body Down/Leg 01.L
+        weight: 0
+      - path: Armature/Body Down/Leg 01.L/Leg 02.L
+        weight: 0
+      - path: Armature/Body Down/Leg 01.L/Leg 02.L/Leg 03.L
+        weight: 0
+      - path: Armature/Body Down/Leg 01.L/Leg 02.L/Leg 03.L/Leg 04.L
+        weight: 0
+      - path: Armature/Body Down/Leg 01.L/Leg 02.L/Leg 03.L/Leg 04.L/Leg 04.L_end
+        weight: 0
+      - path: Armature/Body Down/Leg 01.R
+        weight: 0
+      - path: Armature/Body Down/Leg 01.R/Leg 02.R
+        weight: 0
+      - path: Armature/Body Down/Leg 01.R/Leg 02.R/Leg 03.R
+        weight: 0
+      - path: Armature/Body Down/Leg 01.R/Leg 02.R/Leg 03.R/Leg 04.R
+        weight: 0
+      - path: Armature/Body Down/Leg 01.R/Leg 02.R/Leg 03.R/Leg 04.R/Leg 04.R_end
+        weight: 0
+      - path: Armature.001
+        weight: 1
+      - path: Armature.001/Bone
+        weight: 1
+      - path: Armature.001/Bone/Bone_end
+        weight: 1
+      - path: Armature.002
+        weight: 1
+      - path: Armature.002/Bone 1
+        weight: 1
+      - path: Armature.002/Bone 1/Bone_end 1
+        weight: 1
+      - path: Cube
+        weight: 1
+      - path: Cylinder
+        weight: 1
+      - path: eyelid
+        weight: 1
+      - path: Sphere
+        weight: 1
+      - path: Sphere.001
+        weight: 1
+      maskType: 3
+      maskSource: {fileID: 31900000, guid: de00db65d4ceaa841a1c681625431e90, type: 2}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Armature|BlockTop
+      takeName: Armature|BlockTop
+      firstFrame: 0
+      lastFrame: 1
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 0
+      - path: Armature/Body Down
+        weight: 0
+      - path: Armature/Body Down/Body Mid
+        weight: 1
+      - path: Armature/Body Down/Body Mid/Head
+        weight: 1
+      - path: Armature/Body Down/Body Mid/Head/Head_end
+        weight: 1
+      - path: Armature/Body Down/Body Mid/Shoulder.L
+        weight: 1
+      - path: Armature/Body Down/Body Mid/Shoulder.L/Arm 01.L
+        weight: 1
+      - path: Armature/Body Down/Body Mid/Shoulder.L/Arm 01.L/Arm 02.L
+        weight: 1
+      - path: Armature/Body Down/Body Mid/Shoulder.L/Arm 01.L/Arm 02.L/Finger Down.L
+        weight: 1
+      - path: Armature/Body Down/Body Mid/Shoulder.L/Arm 01.L/Arm 02.L/Finger Down.L/Finger
+          Down.L.001
+        weight: 1
+      - path: Armature/Body Down/Body Mid/Shoulder.L/Arm 01.L/Arm 02.L/Finger Down.L/Finger
+          Down.L.001/Finger Down.L.001_end
+        weight: 1
+      - path: Armature/Body Down/Body Mid/Shoulder.L/Arm 01.L/Arm 02.L/Hand.L
+        weight: 1
+      - path: Armature/Body Down/Body Mid/Shoulder.L/Arm 01.L/Arm 02.L/Hand.L/Finger
+          Top.L
+        weight: 1
+      - path: Armature/Body Down/Body Mid/Shoulder.L/Arm 01.L/Arm 02.L/Hand.L/Finger
+          Top.L/Finger Top.L_end
+        weight: 1
+      - path: Armature/Body Down/Body Mid/Shoulder.R
+        weight: 1
+      - path: Armature/Body Down/Body Mid/Shoulder.R/Arm 01.R
+        weight: 1
+      - path: Armature/Body Down/Body Mid/Shoulder.R/Arm 01.R/Arm 02.R
+        weight: 1
+      - path: Armature/Body Down/Body Mid/Shoulder.R/Arm 01.R/Arm 02.R/Finger Down.R
+        weight: 1
+      - path: Armature/Body Down/Body Mid/Shoulder.R/Arm 01.R/Arm 02.R/Finger Down.R/Finger
+          Down.R.001
+        weight: 1
+      - path: Armature/Body Down/Body Mid/Shoulder.R/Arm 01.R/Arm 02.R/Finger Down.R/Finger
+          Down.R.001/Finger Down.R.001_end
+        weight: 1
+      - path: Armature/Body Down/Body Mid/Shoulder.R/Arm 01.R/Arm 02.R/Hand.R
+        weight: 1
+      - path: Armature/Body Down/Body Mid/Shoulder.R/Arm 01.R/Arm 02.R/Hand.R/Finger
+          Top.R
+        weight: 1
+      - path: Armature/Body Down/Body Mid/Shoulder.R/Arm 01.R/Arm 02.R/Hand.R/Finger
+          Top.R/Finger Top.R_end
+        weight: 1
+      - path: Armature/Body Down/Leg 01.L
+        weight: 0
+      - path: Armature/Body Down/Leg 01.L/Leg 02.L
+        weight: 0
+      - path: Armature/Body Down/Leg 01.L/Leg 02.L/Leg 03.L
+        weight: 0
+      - path: Armature/Body Down/Leg 01.L/Leg 02.L/Leg 03.L/Leg 04.L
+        weight: 0
+      - path: Armature/Body Down/Leg 01.L/Leg 02.L/Leg 03.L/Leg 04.L/Leg 04.L_end
+        weight: 0
+      - path: Armature/Body Down/Leg 01.R
+        weight: 0
+      - path: Armature/Body Down/Leg 01.R/Leg 02.R
+        weight: 0
+      - path: Armature/Body Down/Leg 01.R/Leg 02.R/Leg 03.R
+        weight: 0
+      - path: Armature/Body Down/Leg 01.R/Leg 02.R/Leg 03.R/Leg 04.R
+        weight: 0
+      - path: Armature/Body Down/Leg 01.R/Leg 02.R/Leg 03.R/Leg 04.R/Leg 04.R_end
+        weight: 0
+      - path: Armature.001
+        weight: 1
+      - path: Armature.001/Bone
+        weight: 1
+      - path: Armature.001/Bone/Bone_end
+        weight: 1
+      - path: Armature.002
+        weight: 1
+      - path: Armature.002/Bone 1
+        weight: 1
+      - path: Armature.002/Bone 1/Bone_end 1
+        weight: 1
+      - path: Cube
+        weight: 1
+      - path: Cylinder
+        weight: 1
+      - path: eyelid
+        weight: 1
+      - path: Sphere
+        weight: 1
+      - path: Sphere.001
+        weight: 1
+      maskType: 3
+      maskSource: {fileID: 31900000, guid: de00db65d4ceaa841a1c681625431e90, type: 2}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Armature|holdRightAttack
+      takeName: Armature|holdRightAttack
+      firstFrame: 0
+      lastFrame: 1
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events:
+      - time: 0
+        functionName: UpdateHoldDirect
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: 2c5a33ea5aea4aa4783194c4ac0a8f5a,
+          type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 0
+      - path: Armature/Body Down
+        weight: 0
+      - path: Armature/Body Down/Body Mid
+        weight: 1
+      - path: Armature/Body Down/Body Mid/Head
+        weight: 1
+      - path: Armature/Body Down/Body Mid/Head/Head_end
+        weight: 1
+      - path: Armature/Body Down/Body Mid/Shoulder.L
+        weight: 1
+      - path: Armature/Body Down/Body Mid/Shoulder.L/Arm 01.L
+        weight: 1
+      - path: Armature/Body Down/Body Mid/Shoulder.L/Arm 01.L/Arm 02.L
+        weight: 1
+      - path: Armature/Body Down/Body Mid/Shoulder.L/Arm 01.L/Arm 02.L/Finger Down.L
+        weight: 1
+      - path: Armature/Body Down/Body Mid/Shoulder.L/Arm 01.L/Arm 02.L/Finger Down.L/Finger
+          Down.L.001
+        weight: 1
+      - path: Armature/Body Down/Body Mid/Shoulder.L/Arm 01.L/Arm 02.L/Finger Down.L/Finger
+          Down.L.001/Finger Down.L.001_end
+        weight: 1
+      - path: Armature/Body Down/Body Mid/Shoulder.L/Arm 01.L/Arm 02.L/Hand.L
+        weight: 1
+      - path: Armature/Body Down/Body Mid/Shoulder.L/Arm 01.L/Arm 02.L/Hand.L/Finger
+          Top.L
+        weight: 1
+      - path: Armature/Body Down/Body Mid/Shoulder.L/Arm 01.L/Arm 02.L/Hand.L/Finger
+          Top.L/Finger Top.L_end
+        weight: 1
+      - path: Armature/Body Down/Body Mid/Shoulder.R
+        weight: 1
+      - path: Armature/Body Down/Body Mid/Shoulder.R/Arm 01.R
+        weight: 1
+      - path: Armature/Body Down/Body Mid/Shoulder.R/Arm 01.R/Arm 02.R
+        weight: 1
+      - path: Armature/Body Down/Body Mid/Shoulder.R/Arm 01.R/Arm 02.R/Finger Down.R
+        weight: 1
+      - path: Armature/Body Down/Body Mid/Shoulder.R/Arm 01.R/Arm 02.R/Finger Down.R/Finger
+          Down.R.001
+        weight: 1
+      - path: Armature/Body Down/Body Mid/Shoulder.R/Arm 01.R/Arm 02.R/Finger Down.R/Finger
+          Down.R.001/Finger Down.R.001_end
+        weight: 1
+      - path: Armature/Body Down/Body Mid/Shoulder.R/Arm 01.R/Arm 02.R/Hand.R
+        weight: 1
+      - path: Armature/Body Down/Body Mid/Shoulder.R/Arm 01.R/Arm 02.R/Hand.R/Finger
+          Top.R
+        weight: 1
+      - path: Armature/Body Down/Body Mid/Shoulder.R/Arm 01.R/Arm 02.R/Hand.R/Finger
+          Top.R/Finger Top.R_end
+        weight: 1
+      - path: Armature/Body Down/Leg 01.L
+        weight: 0
+      - path: Armature/Body Down/Leg 01.L/Leg 02.L
+        weight: 0
+      - path: Armature/Body Down/Leg 01.L/Leg 02.L/Leg 03.L
+        weight: 0
+      - path: Armature/Body Down/Leg 01.L/Leg 02.L/Leg 03.L/Leg 04.L
+        weight: 0
+      - path: Armature/Body Down/Leg 01.L/Leg 02.L/Leg 03.L/Leg 04.L/Leg 04.L_end
+        weight: 0
+      - path: Armature/Body Down/Leg 01.R
+        weight: 0
+      - path: Armature/Body Down/Leg 01.R/Leg 02.R
+        weight: 0
+      - path: Armature/Body Down/Leg 01.R/Leg 02.R/Leg 03.R
+        weight: 0
+      - path: Armature/Body Down/Leg 01.R/Leg 02.R/Leg 03.R/Leg 04.R
+        weight: 0
+      - path: Armature/Body Down/Leg 01.R/Leg 02.R/Leg 03.R/Leg 04.R/Leg 04.R_end
+        weight: 0
+      - path: Armature.001
+        weight: 1
+      - path: Armature.001/Bone
+        weight: 1
+      - path: Armature.001/Bone/Bone_end
+        weight: 1
+      - path: Armature.002
+        weight: 1
+      - path: Armature.002/Bone 1
+        weight: 1
+      - path: Armature.002/Bone 1/Bone_end 1
+        weight: 1
+      - path: Cube
+        weight: 1
+      - path: Cylinder
+        weight: 1
+      - path: eyelid
+        weight: 1
+      - path: Sphere
+        weight: 1
+      - path: Sphere.001
+        weight: 1
+      maskType: 3
+      maskSource: {fileID: 31900000, guid: de00db65d4ceaa841a1c681625431e90, type: 2}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Armature|rightAttack
+      takeName: Armature|rightAttack
+      firstFrame: 0
+      lastFrame: 23
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {fileID: 31900000, guid: de00db65d4ceaa841a1c681625431e90, type: 2}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Armature|LeftAttack
+      takeName: Armature|LeftAttack
+      firstFrame: 0
+      lastFrame: 23
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 1
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 1
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {fileID: 31900000, guid: de00db65d4ceaa841a1c681625431e90, type: 2}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Armature|rightAttackV3
+      takeName: Armature|rightAttackV3
+      firstFrame: 0
+      lastFrame: 23
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 1
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 1
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {fileID: 31900000, guid: de00db65d4ceaa841a1c681625431e90, type: 2}
+      additiveReferencePoseFrame: 0
     isReadable: 1
   meshes:
     lODScreenPercentages: []
@@ -1446,7 +2097,7 @@ ModelImporter:
     rootMotionBoneName: Body Down
     rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
     hasTranslationDoF: 0
-    hasExtraRoot: 0
+    hasExtraRoot: 1
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
   animationType: 2
