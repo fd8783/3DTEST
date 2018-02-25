@@ -53,6 +53,10 @@ ModelImporter:
     100090: eyelid.001
     100092: eyelid.002
     100094: eyelid.003
+    100096: eyeball
+    100098: downEyeLid
+    100100: upEyeLid
+    100102: eyeball.001
     400000: Arm 01.L
     400002: Arm 01.R
     400004: Arm 02.L
@@ -101,6 +105,10 @@ ModelImporter:
     400090: eyelid.001
     400092: eyelid.002
     400094: eyelid.003
+    400096: eyeball
+    400098: downEyeLid
+    400100: upEyeLid
+    400102: eyeball.001
     2300000: Cylinder
     2300002: Cube
     2300004: eyelid
@@ -109,6 +117,7 @@ ModelImporter:
     2300010: eyelid.003
     2300012: Sphere
     2300014: Sphere.001
+    2300016: eyeball
     3300000: Cylinder
     3300002: Cube
     3300004: eyelid
@@ -117,6 +126,7 @@ ModelImporter:
     3300010: eyelid.003
     3300012: Sphere
     3300014: Sphere.001
+    3300016: eyeball
     4300000: Cylinder
     4300002: Cube
     4300004: Sphere
@@ -125,6 +135,10 @@ ModelImporter:
     4300010: eyelid.001
     4300012: eyelid.002
     4300014: eyelid.003
+    4300016: eyeball
+    4300018: downEyeLid
+    4300020: upEyeLid
+    4300022: eyeball.001
     7400000: Armature|BlockMid
     7400002: Armature|hold
     7400004: Armature|hold(IK)
@@ -172,6 +186,10 @@ ModelImporter:
     13700008: eyelid.001
     13700010: eyelid.002
     13700012: eyelid.003
+    13700014: eyeball
+    13700016: downEyeLid
+    13700018: upEyeLid
+    13700020: eyeball.001
   externalObjects:
   - first:
       type: UnityEngine:Material

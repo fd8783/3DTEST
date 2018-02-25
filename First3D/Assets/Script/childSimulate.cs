@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class childSimulate : MonoBehaviour {
 
     public GameObject followTarget;
@@ -29,15 +30,15 @@ public class childSimulate : MonoBehaviour {
     }
 	
 	// Update is called once per frame
-	void Update ()
-    {
+	void LateUpdate ()		/******		IT CAN'T UPDATE IN TIME IF IT IS UPDATE() ********/
+	{
         Track();
-    }
+	}
 
-    void Track()
-    {
-        transform.position = empty.transform.position;
-        transform.eulerAngles = startRot + empty.transform.eulerAngles;
-        //transform.rotation = empty.transform.rotation;
-    }
+    public void Track()
+	{
+		transform.position = empty.transform.position;
+        //transform.eulerAngles = startRot + empty.transform.eulerAngles;
+		//transform.rotation = empty.transform.rotation;
+	}
 }
