@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EyeRot : childSimulate {
+public class EyeRotate : childSimulate {
 
 	public Vector3 rotMin, rotMax;
 
@@ -38,7 +38,7 @@ public class EyeRot : childSimulate {
 	{
 		empty.position = (parentCam.position - camEnd.position) *3 + parentCam.position;
 
-		Debug.DrawRay(transform.position, transform.forward * 100, Color.red);
+		//Debug.DrawRay(transform.position, transform.forward * 100, Color.red);
 		transform.LookAt(empty);
 		rotEuler = transform.localEulerAngles;
 
